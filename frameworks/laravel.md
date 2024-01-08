@@ -49,9 +49,4 @@ Example repository [here](https://github.com/coollabsio/coolify-examples/tree/la
 
 ## Requirements
 
-1. Set `Ports Exposes` field to `80`.
-2. If you use `Nixpacks` buildpack, set the following environment variable:
-
-```
-NIXPACKS_PHP_ROOT_DIR=/app/public
-```
+All you need to do is to set `Ports Exposes` field to `80`.
