@@ -52,5 +52,5 @@ Example repository [here](https://github.com/coollabsio/coolify-examples/tree/la
 All you need to do is to set `Ports Exposes` field to `80`.
 
 :::tip
-If you configured your application before and set the `NIXPACKS_PHP_ROOT_DIR` and `NIXPACKS_PHP_FALLBACK_PATH` environment variables, you need to remove them.
+If you configured your application before version beta.184 and set the `NIXPACKS_PHP_ROOT_DIR` and `NIXPACKS_PHP_FALLBACK_PATH` environment variables, you need to remove them.
 :::
