@@ -52,50 +52,26 @@ You can redirect your `www` to `non-www` or vice versa with Traefik.
 
 2. Add a unique middleware to your resource. 
   
-### http www->non-www
+### www to non-www
 ```bash{4,6-8}
 # A similar line is already defined.
 traefik.http.routers.<unique_router_name>.rule=Host(`www.coolify.io`) && PathPrefix(`/`)
-# You need to add these lines
+# You need to add the middleware to the router. If you have multiple middlewares, you need to add them comma separated.
 traefik.http.routers.<unique_router_name>.middlewares=example-middleware
-# Replace http:// with https:// if you want to redirect to https
-traefik.http.middlewares.example-middleware.redirectregex.regex=^http://www\.(.+)
-traefik.http.middlewares.example-middleware.redirectregex.replacement=http://$1
+#
+traefik.http.middlewares.example-middleware.redirectregex.regex=^(http|https)://www\.(.+)
+traefik.http.middlewares.example-middleware.redirectregex.replacement=$${1}://$${2}
 traefik.http.middlewares.example-middleware.redirectregex.permanent=true
 ```
 
-### http non-www->www
+### non-www to www
 ```bash{4,6-8}
 # A similar line is already defined.
 traefik.http.routers.<unique_router_name>.rule=Host(`coolify.io`) && PathPrefix(`/`)
 # You need to add these lines
 traefik.http.routers.<unique_router_name>.middlewares=example-middleware
 # Replace http:// with https:// if you want to redirect to https
-traefik.http.middlewares.example-middleware.redirectregex.regex=^http://(?:www\.)?(.+)
-traefik.http.middlewares.example-middleware.redirectregex.replacement=http://www.$${1}
-traefik.http.middlewares.example-middleware.redirectregex.permanent=true
-```
-
-### https www->non-www
-```bash{4,6-8}
-# A similar line is already defined.
-traefik.http.routers.<unique_router_name>.rule=Host(`www.coolify.io`) && PathPrefix(`/`)
-# You need to add these lines
-traefik.http.routers.<unique_router_name>.middlewares=example-middleware
-# Replace http:// with https:// if you want to redirect to https
-traefik.http.middlewares.example-middleware.redirectregex.regex=^https://www\.(.+)
-traefik.http.middlewares.example-middleware.redirectregex.replacement=https://$1
-traefik.http.middlewares.example-middleware.redirectregex.permanent=true
-```
-
-### https non-www->www
-```bash{4,6-8}
-# A similar line is already defined.
-traefik.http.routers.<unique_router_name>.rule=Host(`coolify.io`) && PathPrefix(`/`)
-# You need to add these lines
-traefik.http.routers.<unique_router_name>.middlewares=example-middleware
-# Replace http:// with https:// if you want to redirect to https
-traefik.http.middlewares.example-middleware.redirectregex.regex=^https://(?:www\.)?(.+)
-traefik.http.middlewares.example-middleware.redirectregex.replacement=https://www.$${1}
+traefik.http.middlewares.example-middleware.redirectregex.regex=^(http|https)://(?:www\.)?(.+)
+traefik.http.middlewares.example-middleware.redirectregex.replacement=$${1}://www.$${2}
 traefik.http.middlewares.example-middleware.redirectregex.permanent=true
 ```
