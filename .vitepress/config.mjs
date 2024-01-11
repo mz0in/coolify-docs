@@ -103,6 +103,7 @@ const config = {
               { text: "SvelteKit", link: "/frameworks/svelte-kit" },
               { text: "Laravel", link: "/frameworks/laravel" },
               { text: "Django", link: "/frameworks/django" },
+              { text: "Rails", link: "/frameworks/rails" },
             ]
           },
           {
