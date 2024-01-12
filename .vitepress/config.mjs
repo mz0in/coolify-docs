@@ -76,7 +76,7 @@ const config = {
             link: "/git-providers/index",
             items: [
               { text: "GitHub Actions", link: "/git-providers/github-actions" },
-              { text: "GitLab Integrations", link: "/git-providers/gitlab-integration" },
+              { text: "GitLab Integration", link: "/git-providers/gitlab-integration" },
 
             ]
           },
@@ -92,7 +92,7 @@ const config = {
             link: "/traefik/index",
             items: [
               { text: "Basic Auth", link: "/traefik/basic-auth" },
-              { text: "Wildcard SSL Certificates", link: "/traefik/wildcard-certificates" },
+              { text: "Wildcard SSL", link: "/traefik/wildcard-certificates" },
               { text: "Redirects", link: "/traefik/redirects" },
             ]
           },
