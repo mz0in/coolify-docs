@@ -70,7 +70,16 @@ const config = {
       {
         text: "Guides",
         items: [
-          { text: "Docker Swarm Cluster", link: "/swarm" },
+          {
+            text: "Docker",
+            link: "/docker/index",
+            items: [
+              { text: "Docker Swarm Cluster", link: "/docker/swarm" },
+              { text: "Docker Compose", link: "/docker/compose" },
+              { text: "Docker Registry", link: "/docker/registry" },
+
+            ]
+          },
           {
             text: "Git Providers",
             link: "/git-providers/index",
@@ -115,7 +124,7 @@ const config = {
           },
         ],
       },
-    
+
       {
         text: "Deep Dive",
         items: [
@@ -141,8 +150,6 @@ const config = {
           { text: "Backups", link: "/backups" },
           { text: "S3 Storages", link: "/s3-storages" },
           { text: "Drain Logs", link: "/drain-logs" },
-          { text: "Docker Registries", link: "/docker-registries" },
-          { text: "Docker Compose", link: "/docker-compose" },
           { text: "Commands", link: "/commands" },
         ],
       },
