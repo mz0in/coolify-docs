@@ -25,13 +25,13 @@ const config = {
     },
     logo: "/favicon.png",
     nav: [
-      {
-        text: "Other Products",
-        items: [
-          { text: "Safetyper", link: "https://safetyper.com" },
-          { text: "Fonts", link: "https://fonts.coollabs.io" },
-        ],
-      },
+      // {
+      //   text: "Other Products",
+      //   items: [
+      //     { text: "Safetyper", link: "https://safetyper.com" },
+      //     { text: "Fonts", link: "https://fonts.coollabs.io" },
+      //   ],
+      // },
     ],
 
     sidebar: [
