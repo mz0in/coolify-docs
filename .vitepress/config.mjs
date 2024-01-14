@@ -82,10 +82,19 @@ const config = {
           },
           {
             text: "Git Providers",
-            link: "/git-providers/index",
             items: [
-              { text: "GitHub Actions", link: "/git-providers/github-actions" },
-              { text: "GitLab Integration", link: "/git-providers/gitlab-integration" },
+              {
+                text: "GitHub",
+                items: [
+                  { text: "GitHub Actions", link: "/git-providers/github/github-actions" },
+                ]
+              },
+              {
+                text: "GitLab",
+                items: [
+                  { text: "GitLab Integration", link: "/git-providers/gitlab/integration" },
+                ]
+              },
 
             ]
           },
