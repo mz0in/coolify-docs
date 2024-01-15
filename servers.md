@@ -41,6 +41,21 @@ head:
       content: https://cdn.coollabs.io/assets/coolify/og-image-docs.png
 ---
 # Servers
+No matter what type of server you have (localhost or remote), you need the following requirements.
+
+- Connectivity
+  1. SSH connectivity between Coolify and the server with SSH key authentication.
+   :::info
+   Your public key should be added to **root** user's `~/.ssh/authorized_keys`.
+
+   If you do not have an SSH Key, you can generate on through Coolify with a simple button or you can generate one manually.
+   :::
+  2. Root user access.
+   :::info
+   We are working on to use non-root user.
+   :::
+- Docker Engine (24+)
+   
 ## Types
 - **Localhost**: the server where Coolify is installed.
 - **Remote Server**: could be any remote linux server.
@@ -61,32 +76,6 @@ You can connect any type of servers to Coolify. It could be a VPS, a Raspberry P
 :::tip
 We recommend [Hetzner](https://hetzner.cloud/?ref=VBVO47VycYLt) **(referral link!)**. They have very cheap but super powerful servers, in EU and US.
 :::
-
-### Requirements
-
-:::warning
-⚠️ The only manual step you need to do is to place your SSH key on the server, into `root` user's `~/.ssh/authorized_keys` file.
-:::
-
-- Connectivity
-  1. SSH connectivity between Coolify and the server with SSH key authentication.
-   :::info
-   Your public key should be added to **root** user's `~/.ssh/authorized_keys`.
-
-   If you do not have an SSH Key, you can generate on through Coolify with a simple button or you can generate one manually.
-   :::
-  2. Root user access.
-   :::info
-   We are working on to use non-root user.
-   :::
-- Docker Engine (24+)
-  1. Automatically installed from the UI, but you can install manually.
-
-> Only Debian and Redhat based servers are supported at the moment for automated Docker Engine installation.
-
-#### Install Docker Engine manually
-You can install Docker Engine manually on your server. Find all instructions [here](https://docs.docker.com/engine/install/#server).
-
 
 ### Cloudflare Tunnels
 You can also set to use Cloudflare Tunnels for your servers.
@@ -117,7 +106,6 @@ If you do not have any wildcard domain set, Coolify will generate a [sslip.io](h
 
 In this case, it will be: `http://vgsco4o.127.0.0.1.sslip.io`, where `127.0.0.1` is your server's IP.
 ## Proxy
-### Types
 - **Traefik**: Automatically configure Traefik(v2) based on your deployed resources.
 - **Custom/None**: You will configure a proxy manually (only for advanced users).
 
@@ -125,12 +113,12 @@ In this case, it will be: `http://vgsco4o.127.0.0.1.sslip.io`, where `127.0.0.1`
 Soon we will support Nginx & Caddy with fully automated configuration.
 :::
 
-#### Traefik
+### Traefik
 Coolify uses Traefik proxy by default to create a reverse proxy for your resources.
 
 :::tip
 Traefik only starts when you did not select any proxy for your server and you have a domain configured for a resource or your Coolify instance itself. 
 :::
 
-#### Add Custom Configuration
+#### Dynamic Configuration
 You can always add your own configuration to the proxy settings from Coolify's UI (`/server/<server_uuid>/proxy`) or by adding it to a [specific directory](/no-vendor-lock-in.md#persistent-directories) on your server.

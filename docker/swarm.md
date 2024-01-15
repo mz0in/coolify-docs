@@ -56,7 +56,7 @@ You need to have an external Docker Registry available to use the a Swarm, as al
 - The Swarm Manager needs to push the image to the Docker Registry.
 - The Swarm Workers need to pull the image from the Docker Registry.
 
-So set your docker login credentials accordingly. More information [here](./docker-registries.md).
+So set your docker login credentials accordingly. More information [here](./registry).
 
 ## Install Swarm Cluster
 :::danger WIP

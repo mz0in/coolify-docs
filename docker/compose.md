@@ -43,6 +43,39 @@ head:
 
 # Docker Compose
 
+If you are using `Docker Compose` based deployments, you need to understand how Docker Compose works with Coolify.
+
+In all cases the Docker Compose (`docker-compose.y[a]ml`) file is the single source of truth.
+
+## Defining environment variables
+
+You have the following compose file:
+
+```yaml
+version: '3.8'
+
+services:
+  db:
+    image: adminer
+    environment:
+      TEST: ${TEST}
+```
+
+And you define `TEST` and `ANOTHERTEST` environment variables inside Coolify, only `TEST` will be used, as Coolify cannot determine where to add `ANOTHERTEST` environment variable.
+
+So if you want to use `ANOTHERTEST` environment variable, you need to add it to the compose file.
+
+```yaml
+version: '3.8'
+
+services:
+  db:
+    image: adminer
+    environment:
+      TEST: ${TEST}
+      ANOTHERTEST: ${ANOTHERTEST}
+```
+
 ## Raw Docker Compose Deployment
 You can set with docker compose build pack to deploy your compose file directly without Coolify's magic. It is called `Raw Compose Deployment`.
 

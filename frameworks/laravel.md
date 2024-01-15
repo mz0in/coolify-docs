@@ -20,7 +20,7 @@ head:
       content: Self-hosting with superpowers.
   - - meta
     - name: twitter:image
-      content: https://coolcdn.b-cdn.net/assets/coolify/laravel-og-image.jpg
+      content: https://coolcdn.b-cdn.net/assets/coolify/laravel-og-image.png
   - - meta
     - property: og:type
       content: website
@@ -38,7 +38,7 @@ head:
       content: Coolify
   - - meta
     - property: og:image
-      content: https://coolcdn.b-cdn.net/assets/coolify/laravel-og-image.jpg
+      content: https://coolcdn.b-cdn.net/assets/coolify/laravel-og-image.png
 ---
 
 # Laravel
@@ -49,10 +49,8 @@ Example repository [here](https://github.com/coollabsio/coolify-examples/tree/la
 
 ## Requirements
 
-1. Set `Ports Exposes` field to `80`.
-2. If you use `Nixpacks` buildpack, set the following environment variable:
+All you need to do is to set `Ports Exposes` field to `80`.
 
-```
-NIXPACKS_PHP_ROOT_DIR=/app/public
-NIXPACKS_PHP_FALLBACK_PATH=/index.php
-```
+:::tip
+If you configured your application before version beta.184 and set the `NIXPACKS_PHP_ROOT_DIR` and `NIXPACKS_PHP_FALLBACK_PATH` environment variables, you need to remove them.
+:::

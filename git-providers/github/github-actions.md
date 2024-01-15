@@ -51,7 +51,7 @@ Here is an [example repository](https://github.com/andrasbacsai/github-actions-w
 
 1. You need to create a [Github Action workflow](https://github.com/andrasbacsai/github-actions-with-coolify/blob/main/.github/workflows/build.yaml) file in your repository.
 2. You need to build your image and push it to a Docker registry. In the example, I use ghcr.io, but you can use any other registry.
-3. You need to create a [Coolify API Token](../api-authentication.md#generate-a-token) and add it to your Github repository secrets.
+3. You need to create a [Coolify API Token](../../api-authentication.md#generate-a-token) and add it to your Github repository secrets.
    - `COOLIFY_TOKEN` in the example.
 4. In Coolify, you need to setup your deployment type. It could be a simple Dockerfile, Docker Compose or Docker Image based deployment.
 5. Get the proper webhook endpoint from Coolify (Your resource / `Webhook` menu) and add it to your Github repository secrets.

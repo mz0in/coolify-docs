@@ -25,13 +25,13 @@ const config = {
     },
     logo: "/favicon.png",
     nav: [
-      {
-        text: "Other Products",
-        items: [
-          { text: "Safetyper", link: "https://safetyper.com" },
-          { text: "Fonts", link: "https://fonts.coollabs.io" },
-        ],
-      },
+      // {
+      //   text: "Other Products",
+      //   items: [
+      //     { text: "Safetyper", link: "https://safetyper.com" },
+      //     { text: "Fonts", link: "https://fonts.coollabs.io" },
+      //   ],
+      // },
     ],
 
     sidebar: [
@@ -70,13 +70,32 @@ const config = {
       {
         text: "Guides",
         items: [
-          { text: "Docker Swarm Cluster", link: "/swarm" },
+          { text: "DNS Settings", link: "/dns-settings" },
+          {
+            text: "Docker",
+            link: "/docker/index",
+            items: [
+              { text: "Docker Swarm Cluster", link: "/docker/swarm" },
+              { text: "Docker Compose", link: "/docker/compose" },
+              { text: "Docker Registry", link: "/docker/registry" },
+
+            ]
+          },
           {
             text: "Git Providers",
-            link: "/git-providers/index",
             items: [
-              { text: "GitHub Actions", link: "/git-providers/github-actions" },
-              { text: "GitLab Integrations", link: "/git-providers/gitlab-integration" },
+              {
+                text: "GitHub",
+                items: [
+                  { text: "GitHub Actions", link: "/git-providers/github/github-actions" },
+                ]
+              },
+              {
+                text: "GitLab",
+                items: [
+                  { text: "GitLab Integration", link: "/git-providers/gitlab/integration" },
+                ]
+              },
 
             ]
           },
@@ -92,7 +111,7 @@ const config = {
             link: "/traefik/index",
             items: [
               { text: "Basic Auth", link: "/traefik/basic-auth" },
-              { text: "Wildcard SSL Certificates", link: "/traefik/wildcard-certificates" },
+              { text: "Wildcard SSL", link: "/traefik/wildcard-certificates" },
               { text: "Redirects", link: "/traefik/redirects" },
             ]
           },
@@ -103,6 +122,7 @@ const config = {
               { text: "SvelteKit", link: "/frameworks/svelte-kit" },
               { text: "Laravel", link: "/frameworks/laravel" },
               { text: "Django", link: "/frameworks/django" },
+              { text: "Rails", link: "/frameworks/rails" },
             ]
           },
           {
@@ -114,7 +134,7 @@ const config = {
           },
         ],
       },
-    
+
       {
         text: "Deep Dive",
         items: [
@@ -140,8 +160,6 @@ const config = {
           { text: "Backups", link: "/backups" },
           { text: "S3 Storages", link: "/s3-storages" },
           { text: "Drain Logs", link: "/drain-logs" },
-          { text: "Docker Registries", link: "/docker-registries" },
-          { text: "Docker Compose", link: "/docker-compose" },
           { text: "Commands", link: "/commands" },
         ],
       },

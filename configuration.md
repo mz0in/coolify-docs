@@ -42,45 +42,97 @@ head:
 ---
 # Configuration
 
-## Notifications
+Here you can find all the information about how to configure the basic settings of Coolify.
 
-You can set up several types of notifications to your resources. Each team could have different notification settings.
+## OpenSSH Server
 
-### Email
+Coolify uses SSH to connect to your server and deploy your application, even if you are using only the `localhost` server - where Coolify is running on.
 
-Email notifications requires you to set up an SMTP server or supported service (Resend).
+To validate your configuration, make sure the followings are set on your server.
 
-#### System Wide (transactional)
+:::warning
+Some commands may vary based on your Linux distribution.
+:::
 
-If you self-host Coolify, you can set up a system-wide SMTP server in the **Settings** menu.
+1. Make sure the SSH server is installed and running.
 
-#### Team Wide
+```bash
+# Ubuntu/Debian
+sudo apt install openssh-server
+sudo systemctl status sshd
 
-To setup notifications, go to the **Team** tab and click on **Notifications** and then **Email**.
+# CentOS/RHEL
+sudo yum install openssh-server
+sudo systemctl status sshd
 
-If you have a System Wide Email settings, you can enable to use it for the team. Otherwise, you can set up a custom SMTP server/Resend for the team.
+# Arch Linux
+sudo pacman -S openssh
+sudo systemctl status sshd
 
-### Telegram
+# Alpine Linux
+sudo apk add openssh
+sudo rc-service sshd status
 
-You need to create a bot token on Telegram. You can do that by talking to the [BotFather](https://t.me/botfather).
+# SLES/openSUSE
+sudo zypper install openssh
+sudo systemctl status sshd
+```
+2. Make sure `PermitRootLogin` is set to `yes` or `without-password` or `prohibit-password`  in `/etc/ssh/sshd_config` file.
 
-More information on how to create a bot token can be found [here](https://core.telegram.org/bots/tutorial).
+```bash
+# Check the current value
+grep PermitRootLogin /etc/ssh/sshd_config
 
-> You can add your new bot to a group chat, so you can share these notifications with your team.
+# If the value is not `yes` or `without-password` or `prohibit-password`, change it and make sure it is not commented out.
+# If it is commented out, remove the `#` character at the beginning of the line.
 
-### Discord
+sudo vi /etc/ssh/sshd_config
 
-You only need to add a Discord webhook endpoint to receive notifications.
+# You can exit the editor by pressing `Esc` and then `:wq` and then `Enter` keys - thank me later.
 
-More information on how to create a webhook can be found [here](https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks).
+# Restart the SSH service
+# Ubuntu/Debian
+sudo systemctl restart sshd
 
-### Events
+# CentOS/RHEL
+sudo systemctl restart sshd
 
-You can subscribe to the following events:
+# Arch Linux
+sudo systemctl restart sshd
 
-- Container Status Changed (Stopped, Started, Restarted).
-- Application Deployments (Finished, Failed).
-- Backup Status (Finished, Failed).
+# Alpine Linux
+sudo rc-service sshd restart
+
+# SLES/openSUSE
+sudo systemctl restart sshd
+```
+
+3. Make sure an SSH key is added to the `authorized_keys` file.
+
+If you installed Coolify with the automated script, you don't need to do anything else. 
+
+If you installed Coolify manually, you need to add an SSH key to the `authorized_keys` file.
+
+```bash
+# Create a new SSH key pair ed25519 (recommended) or rsa (legacy) with the following command.
+
+# The key needs to be created in the `/data/coolify/ssh/keys` directory with,
+# id.root@host.docker.internal name,
+# no passphrase,
+# root@coolify comment.
+
+ssh-keygen -t ed25519 -a 100 -f /data/coolify/ssh/keys/id.root@host.docker.internal -q -N "" -C root@coolify
+chown 9999 /data/coolify/ssh/keys/id.root@host.docker.internal
+
+# Copy the public key to the `authorized_keys` file
+cat /data/coolify/ssh/keys/id.root@host.docker.internal.pub >>~/.ssh/authorized_keys
+
+# Set the correct permissions
+chmod 600 ~/.ssh/authorized_keys
+chmod 700 ~/.ssh
+```
+
+Add the private key to Coolify at `Security` menu -> `Private Keys` and set this new key in the localhost server settings.
 
 ## Firewall
 
@@ -94,6 +146,7 @@ If you are using `Oracle Cloud free ARM server`, you need to allow these ports i
 :::
 
 - For GitHub integration, [check this](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-githubs-ip-addresses).
+  
 
 ### Coolify Cloud
 If you need the public facing IPs to allow inbound connections to your servers, please [contact us](/contact.md).
@@ -145,3 +198,43 @@ server {
   }
 }
 ```
+
+## Notifications
+
+You can set up several types of notifications to your resources. Each team could have different notification settings.
+
+### Email
+
+Email notifications requires you to set up an SMTP server or supported service (Resend).
+
+#### System Wide (transactional)
+
+If you self-host Coolify, you can set up a system-wide SMTP server in the **Settings** menu.
+
+#### Team Wide
+
+To setup notifications, go to the **Team** tab and click on **Notifications** and then **Email**.
+
+If you have a System Wide Email settings, you can enable to use it for the team. Otherwise, you can set up a custom SMTP server/Resend for the team.
+
+### Telegram
+
+You need to create a bot token on Telegram. You can do that by talking to the [BotFather](https://t.me/botfather).
+
+More information on how to create a bot token can be found [here](https://core.telegram.org/bots/tutorial).
+
+> You can add your new bot to a group chat, so you can share these notifications with your team.
+
+### Discord
+
+You only need to add a Discord webhook endpoint to receive notifications.
+
+More information on how to create a webhook can be found [here](https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks).
+
+### Events
+
+You can subscribe to the following events:
+
+- Container Status Changed (Stopped, Started, Restarted).
+- Application Deployments (Finished, Failed).
+- Backup Status (Finished, Failed).

@@ -61,3 +61,7 @@ You need to set your SSL/TLS configuration to at least `Full` in your Cloudflare
 
 Documentation: https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full/
 
+
+## Prisma cannot connect to local database
+If you are using `Nixpacks`, you need to set the database to public to be able to reach it during the build process.
+If you are using `Dockerfile` or `Docker Compose`, it should work.

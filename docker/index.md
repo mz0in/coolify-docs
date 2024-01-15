@@ -41,7 +41,10 @@ head:
       content: https://cdn.coollabs.io/assets/coolify/og-image-docs.png
 ---
 
-# Git Providers
+# Docker
 
-- [GitHub Actions](./github-actions.md)
-- [GitLab Integration](./gitlab-integration.md)
+Docker related guides.
+
+- [Docker Swarm Cluster](/docker/swarm)
+- [Docker Compose](/docker/compose)
+- [Docker Registry](/docker/registry)
