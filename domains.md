@@ -54,3 +54,9 @@ All domain fields are capable to generate your proxy configurations based on the
 ## Wildcard Domain
 
 You can set a wildcard domain (`example: http://example.com`) to your server, so you can easily assign generated domains to all the resources connected to this server. [More details](/servers.md#wildcard-domain)
+
+## DNS Validation
+
+Since version `beta.191`, Coolify will validates DNS records for your domains with `1.1.1.1` Cloudflare DNS server.
+
+If you want to use different DNS server, go to your `Settings` page and change the `DNS Servers` field (comma separated list).
