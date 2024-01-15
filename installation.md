@@ -41,6 +41,22 @@ head:
       content: https://cdn.coollabs.io/assets/coolify/og-image-docs.png
 ---
 # Installation
+Installation of Coolify is automated with a single script.
+
+```bash
+curl -fsSL https://cdn.coollabs.io/coolify/install.sh | bash
+```
+
+You can find the source code [here](https://github.com/coollabsio/coolify/blob/main/scripts/install.sh).
+
+The script will do the following on your operating system:
+- Install basic commands: `curl wget git jq jc`
+- Docker Engine (24+)
+- Configures proper logging for Docker Engine.
+- Creates directory structure at `/data/coolify` for all the configuration files.
+- Creates an SSH key for Coolify to be able to manage this server from itself at `/data/coolify/ssh/keys/id.root@host.docker.internal`.
+- Install dockerized Coolify.
+
 ## Supported Operating Systems
 
 - Debian based Linux distributions (Debian, Ubuntu, etc.)
@@ -208,7 +224,7 @@ docker volume rm coolify-db coolify-redis
 ```
 
 :::warning
-The following command will delete EVERYTING related to your configurations, backups, etc.
+The following command will delete EVERYTHING related to your configurations, backups, etc.
 :::
 
 And delete all configurations in `/data/coolify`:
