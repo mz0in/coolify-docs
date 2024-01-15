@@ -41,21 +41,6 @@ head:
       content: https://cdn.coollabs.io/assets/coolify/og-image-docs.png
 ---
 # Installation
-Installation of Coolify is automated with a single script.
-
-```bash
-curl -fsSL https://cdn.coollabs.io/coolify/install.sh | bash
-```
-
-You can find the source code [here](https://github.com/coollabsio/coolify/blob/main/scripts/install.sh).
-
-The script will do the following on your operating system:
-- Install basic commands: `curl wget git jq jc`
-- Docker Engine (24+)
-- Configures proper logging for Docker Engine.
-- Creates directory structure at `/data/coolify` for all the configuration files.
-- Creates an SSH key for Coolify to be able to manage this server from itself at `/data/coolify/ssh/keys/id.root@host.docker.internal`.
-- Install dockerized Coolify.
 
 ## Supported Operating Systems
 
@@ -116,13 +101,13 @@ curl -fsSL https://cdn.coollabs.io/coolify/install.sh | bash
 
 You can find the source code [here](https://github.com/coollabsio/coolify/blob/main/scripts/install.sh).
 
-The script will do the followings on your operating system:
+The script will do the following on your operating system:
 - Install basic commands: `curl wget git jq jc`
 - Docker Engine (24+)
 - Configures proper logging for Docker Engine.
 - Creates directory structure at `/data/coolify` for all the configuration files.
 - Creates an SSH key for Coolify to be able to manage this server from itself at `/data/coolify/ssh/keys/id.root@host.docker.internal`.
-- Install and start dockerized Coolify.
+- Install dockerized Coolify.
 
 ## Manually Installation
 If you want to manually install Coolify on a system where Docker Engine available, follow the steps below.
