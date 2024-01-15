@@ -61,7 +61,7 @@ Developer view are useful to quickly overwrite or copy all your variables.
 
 ## Predefined Variables
 
-Coolify predefines some variables for you, so you can use them in your application. All you need to do is to add an environment variable like this
+Coolify predefines some variables for you, so you can use them in your application. All you need to do is to add an environment variable like this to your application.
 
 ```bash
 # For example, you can use this variable in your application
