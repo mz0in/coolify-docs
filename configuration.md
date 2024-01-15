@@ -42,6 +42,8 @@ head:
 ---
 # Configuration
 
+Here you can find all the information about how to configure the basic settings of Coolify.
+
 ## OpenSSH Server
 
 Coolify uses SSH to connect to your server and deploy your application, even if you are using only the `localhost` server - where Coolify is running on.

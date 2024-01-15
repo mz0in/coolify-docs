@@ -90,7 +90,7 @@ Hosting the following things:
 
 ## Automated Installation
 ### Prerequisites
-1. Make sure `SSH` is enabled and you can connect to your server with `SSH` from your local machine with `root` user.
+1. Make sure `SSH` is enabled and you can connect to your server with `SSH` from your local machine with `root` user: [more details here.](/configuration#openssh-server)
 2. Make sure `curl` command is available on your server.
 Installation of Coolify is automated with a single script.
 
@@ -118,7 +118,7 @@ Make sure it is started and enabled with `systemd` or `systemctl` or `service` o
 :::
 
 2. Install `curl` command.
-3. Make sure `SSH` is enabled and you can connect to your server with `SSH` from your local machine with `root` user.
+3. Make sure `SSH` is enabled and you can connect to your server with `SSH` from your local machine with `root` user: [more details here.](/configuration#openssh-server)
 
 :::tip
 This is required because Coolify from the docker container will connect to all of your servers via SSH, even to the host machine itself.
