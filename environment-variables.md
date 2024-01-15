@@ -58,3 +58,16 @@ You can see your environment variables in a developer view (like `.env`) and in 
 :::tip
 Developer view are useful to quickly overwrite or copy all your variables.
 :::
+
+## Predefined Variables
+
+Coolify predefines some variables for you, so you can use them in your application. All you need to do is to add an environment variable like this
+
+```bash
+# For example, you can use this variable in your application
+MY_VARIABLE=$SOURCE_COMMIT
+# You will have the commit hash of the source code in your application as an environment variable in MY_VARIABLE
+```
+
+### `SOURCE_COMMIT`
+Commit hash of the source code.
