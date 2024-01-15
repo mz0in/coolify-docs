@@ -70,6 +70,7 @@ const config = {
       {
         text: "Guides",
         items: [
+          { text: "DNS Settings", link: "/dns-settings" },
           {
             text: "Docker",
             link: "/docker/index",
