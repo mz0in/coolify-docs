@@ -54,6 +54,8 @@ By default, you can't login as root user. You need to do the following steps to 
 4. Add a public key to `/root/.ssh/authorized_keys` file which is also defined in your Coolify instance.
 
 ## Firewall Rules
+This is only required if you self-host Coolify on Oracle ARM server.
+
 By default, Oracle ARM server has a firewall enabled and you need to allow some ports to use Coolify.
 
 For more details, check [this](../configuration.md#firewall) page.
