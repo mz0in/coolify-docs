@@ -108,6 +108,7 @@ const config = {
             {
               text: "Server",
               items: [
+                { text: "Build Server", link: "/server/build-server" },
                 { text: "Firewall", link: "/server/firewall" },
                 { text: "OpenSSH", link: "/server/openssh" },
                 { text: "Oracle ARM Server", link: "/server/oracle-arm-server" },
