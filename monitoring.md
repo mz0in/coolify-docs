@@ -41,25 +41,34 @@ head:
       content: https://cdn.coollabs.io/assets/coolify/og-image-docs.png
 ---
 
-# Notifications
+# Monitoring
 
-You can set up several types of notifications to your resources. Each team could have different notification settings.
+Coolify has a built-in monitoring system, which can be used to monitor your resources and send notifications to your team if something goes wrong.
 
-## Email
+Currently Coolify monitors the following resources:
+
+- Disk usage - If your disk usage is above the configured threshold, it does an automatic cleanup.
+- If any of your containers are stopped or restarted.
+- Backup status.
+
+## Notifications
+You can set up several types of notifications. Each team could have different notification settings.
+
+### Email
 
 Email notifications requires you to set up an SMTP server or supported service (Resend).
 
-### System Wide (transactional)
+#### System Wide (transactional)
 
 If you self-host Coolify, you can set up a system-wide SMTP server in the **Settings** menu.
 
-### Team Wide
+#### Team Wide
 
 To setup notifications, go to the **Team** tab and click on **Notifications** and then **Email**.
 
 If you have a System Wide Email settings, you can enable to use it for the team. Otherwise, you can set up a custom SMTP server/Resend for the team.
 
-## Telegram
+### Telegram
 
 You need to create a bot token on Telegram. You can do that by talking to the [BotFather](https://t.me/botfather).
 
@@ -67,13 +76,13 @@ More information on how to create a bot token can be found [here](https://core.t
 
 > You can add your new bot to a group chat, so you can share these notifications with your team.
 
-## Discord
+### Discord
 
 You only need to add a Discord webhook endpoint to receive notifications.
 
 More information on how to create a webhook can be found [here](https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks).
 
-## Events
+### Events
 
 You can subscribe to the following events:
 

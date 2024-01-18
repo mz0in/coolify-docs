@@ -41,10 +41,22 @@ head:
       content: https://cdn.coollabs.io/assets/coolify/og-image-docs.png
 ---
 
-# Traefik Configuration
+# Authentication
 
-Here are a few guides to help you configure Traefik for your application. Some features are not automatically configured, as they are not required for all applications.
+API request requires a `Bearer` token in `Authorization` header, which could be generated from the UI.
 
-- [Basic Auth](/traefik/basic-auth.md)
-- [Wildcard SSL Certificates](/traefik/wildcard-certificates.md)
-- [Redirects](/traefik/redirects.md)
+## Generate a Token
+
+Go to `Security` menu -> `API tokens`.
+
+Define a name for your token and click `Create New Token`.
+
+You will see the token once, so make sure to copy it and store it in a safe place.
+
+### Scope
+
+Tokens are scoped for your currently active Team. If you switch to another team, you will see the tokens for that team only.
+
+## Revoking a Token
+
+Go to `Security` menu -> API tokens and simple click `Revoke` button for the token you want to revoke.

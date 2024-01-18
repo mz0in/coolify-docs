@@ -11,7 +11,7 @@ head:
       content: summary_large_image
   - - meta
     - name: twitter:site
-      content: "@coolifyio"
+      content: '@coolifyio'
   - - meta
     - name: twitter:title
       content: Coolify Documentation
@@ -40,27 +40,17 @@ head:
     - property: og:image
       content: https://cdn.coollabs.io/assets/coolify/og-image-docs.png
 ---
+# Cloud
 
-# Authentication
+We provide a cloud service for Coolify, which means you don't need to install it on your own server, but you can attach your own server to our cloud version. 
 
-API request requires a `Bearer` token in `Authorization` header, which could be generated from the UI.
+It is a paid service.
 
-## Generate a Token
+You get all the features of Coolify, but with a limited number of servers based on your subscription plan.
 
-Go to `Security` menu -> API tokens.
+Learn more here: [https://coolify.io](https://coolify.io)
 
-Define a name for your token and click `Create New Token`.
+## Where are our server located?
 
-You will see the token once, so make sure to copy it and store it in a safe place.
+All of our servers are located in Germany.
 
-### Scope
-
-Tokens are scoped for your currently active Team. If you switch to another team, you will see the tokens for that team.
-
-:::warning
-As API is still under heavy development, member roles are not yet implemented. So, all tokens have the same permissions.
-:::
-
-## Revoking a Token
-
-Go to `Security` menu -> API tokens and simple click `Revoke` button for the token you want to revoke.

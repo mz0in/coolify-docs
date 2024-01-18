@@ -40,30 +40,19 @@ head:
     - property: og:image
       content: https://cdn.coollabs.io/assets/coolify/og-image-docs.png
 ---
+# Firewall
 
-# Endpoints
+For self-hosting Coolify, you need to allow some ports on your firewall.
 
-This is just a temporary place for endpoints. We will have a better documentation soon for API endpoints.
+- For Coolify: `8000` (http), `6001` (websocket) and `22` (or a custom port) (required)
+- Reverse Proxy: `80, 443` (optional)
 
-:::warning
-As API is still under heavy development, endpoints could change without notice. We are still looking into the best option for API versioning, structure, etc.
+:::warning 
+If you are using `Oracle Cloud Free ARM Server`, you need to allow these ports inside Oracle's Dashboard, otherwise you cannot reach your instance from the internet after installation.
 :::
 
-## Deploy Webhook
+- For GitHub integration, check [this](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-githubs-ip-addresses).
+  
 
-:::tip
-The URL for each resource could be found on the `Webhooks` menu on the resource page.
-:::
-
-GET `<instanceUrl>/api/v1/deploy?uuid=<resourceUuid>&force=false`
-
-Example: `https://app.coolify.io/api/v1/deploy?uuid=hg04w48`
-
-```bash
-curl -H "Authorization: Bearer 4|bBx6dwcuY4IL05SxDvUjfFs547vOgZOJTx3Fp95rd76ff2dc" https://app.coolify.io/api/v1/deploy?uuid=hg04w48
-```
-
-### Query Parameters
-
-- `uuid`: Could be found in the URL of the resource page.
-- `force`: If set to `true`, the deployment won't use cache. Default is `false`.
+### Coolify Cloud
+If you need the public facing IPs to allow inbound connections to your servers, please [contact us](/contact.md).

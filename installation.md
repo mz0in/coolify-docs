@@ -42,7 +42,9 @@ head:
 ---
 # Installation
 
-## Supported Operating Systems
+Coolify is a self-hosted application, which means you need to install it on your own server.
+
+## Supported OS
 
 - Debian based Linux distributions (Debian, Ubuntu, etc.)
 - Redhat based Linux distributions (CentOS, Fedora, Redhat, AlmaLinux, Rocky etc.)
@@ -57,17 +59,14 @@ If you would like to have other, please consider [open an issue on GitHub](https
 We recommend [Hetzner](https://hetzner.cloud/?ref=VBVO47VycYLt) **(referral link!)**. They have very cheap but super powerful servers, in EU and US.
 :::
 
-## Required Server Resources
+## Required Resources
 
-Minimum required resources for Coolify:
-
+For Coolify:
 - 2 CPUs
 - 2 GBs memory
 - 30+ GB of storage for the images.
 
-It could run on smaller servers as well, but not recommended.
-
-Based on what you would like to host additional resources (CPU, memory, disk) are needed.
+For deployed resources:
 
 Self-hosting could be heavy if you would like to run a lot of things.
 
@@ -90,8 +89,11 @@ Hosting the following things:
 ```
 
 ## Automated Installation
+
+This works with Docker Engine (not Docker Desktop) on any supported Linux distribution.
+
 ### Prerequisites
-1. Make sure `SSH` is enabled and you can connect to your server with `SSH` from your local machine with `root` user: [more details here.](/configuration#openssh-server)
+1. Make sure `SSH` is enabled and you can connect to your server with `SSH` from your local machine with `root` user: [more details here.](./server/openssh.md)
 2. Make sure `curl` command is available on your server.
 Installation of Coolify is automated with a single script.
 
@@ -119,7 +121,7 @@ Make sure it is started and enabled with `systemd` or `systemctl` or `service` o
 :::
 
 2. Install `curl` command.
-3. Make sure `SSH` is enabled and you can connect to your server with `SSH` from your local machine with `root` user: [more details here.](/configuration#openssh-server)
+3. Make sure `SSH` is enabled and you can connect to your server with `SSH` from your local machine with `root` user. More details [here](./server/openssh.md).
 
 :::tip
 This is required because Coolify from the docker container will connect to all of your servers via SSH, even to the host machine itself.
@@ -216,4 +218,41 @@ And delete all configurations in `/data/coolify`:
 
 ```bash
 rm -fr /data/coolify
+```
+## Custom Proxy
+If you are using a custom proxy (like Nginx / Caddy), you need to set the following manually for your Coolify instance.
+
+You need to proxy `/app*` to `coolify-realtime:6001` and `*` to `coolify:8000` container. 
+
+### Caddy
+
+```bash
+# Caddyfile
+app.coolify.io {
+  handle /app* {
+		reverse_proxy coolify-realtime:6001
+	}
+
+	handle {
+		reverse_proxy coolify:8000
+	}
+}
+```
+
+### Nginx
+
+```bash
+# nginx.conf
+server {
+  listen 80;
+  server_name app.coolify.io;
+
+  location /app {
+    proxy_pass http://coolify-realtime:6001;
+  }
+
+  location / {
+    proxy_pass http://coolify:8000;
+  }
+}
 ```

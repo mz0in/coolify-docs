@@ -41,9 +41,9 @@ head:
       content: https://coolcdn.b-cdn.net/assets/coolify/oracle-arm-og-image.png
 ---
 
-# Oracle ARM Server Setup
+# Oracle ARM Server
 
-If you are using `Oracle Cloud free ARM server`, you need to do a few extra steps to use it in Coolify, as a Coolify instance or just a remote server.
+If you are using `Oracle Cloud free ARM server`, you need to do a few extra steps to use it in Coolify, as a `Coolify instance` or just a `remote server`.
 
 ## Setup Root User
 By default, you can't login as root user. You need to do the following steps to enable root user.
@@ -58,4 +58,4 @@ This is only required if you self-host Coolify on Oracle ARM server.
 
 By default, Oracle ARM server has a firewall enabled and you need to allow some ports to use Coolify.
 
-For more details, check [this](../configuration.md#firewall) page.
+For more details, check [this](./firewall.md) page.

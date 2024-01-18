@@ -41,8 +41,8 @@ head:
       content: https://cdn.coollabs.io/assets/coolify/og-image-docs.png
 ---
 
-# Server Providers
+# API Reference
 
-Here are a few guides to help you configure your server based on your provider.
+Here you can find all the API endpoints for Coolify.
 
-- [Oracle ARM](/server-providers/oracle-arm-server-setup.md)
+Check the sidebar for more information.

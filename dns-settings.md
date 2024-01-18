@@ -81,3 +81,7 @@ Then if you create a new resource:
 :::tip
 The Preview URL template could be modified in the application's page / `Preview Deployments` tab.
 :::
+
+## Instance Domain
+
+If you self-host Coolify, you can set your Coolify instance a custom domain in the `/settings` page.
