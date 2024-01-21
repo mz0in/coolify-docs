@@ -101,3 +101,15 @@ To be able to use Coolify's monitoring feature and optionally Traefik, you need 
 - Set the `Host` rule to your domain / path necessary.
 - `coolify` is the prefix for Coolify's labels.
 - `coolify.applicationId` is your application id. You can find it on your application's General page at the `Docker Compose Content` input box (bottom page).
+
+
+## Connect to Predefined Networks
+By default, each compose stack is deployed to a separate network, with the name of your resource uuid. This will allow to each service in your stack to communicate with each other.
+
+But in some cases, you would like to communicate with other resources in your account. For example, you would like to connect your application to a database, which is deployed in another stack.
+
+To do this you need to enable `Connect to Predefined Network` option on your `Service Stack` page, but this will make the internal Docker DNS not work as expected.
+
+Here is an example. You have a stack with a `postgres` database and a `laravel` application. If you connect this stack to the predefined network, Coolify will rename your `postgres` stack to `postgres-<uuid>` and your `laravel` stack to `laravel-<uuid>`.
+
+So, if you want to connect your `laravel` application to your `postgres` database, you need to set the `DB_HOST` environment variable to `postgres-<uuid>` and _NOT_ `postgres`.
