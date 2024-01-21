@@ -110,6 +110,6 @@ But in some cases, you would like to communicate with other resources in your ac
 
 To do this you need to enable `Connect to Predefined Network` option on your `Service Stack` page, but this will make the internal Docker DNS not work as expected.
 
-Here is an example. You have a stack with a `postgres` database and a `laravel` application. If you connect this stack to the predefined network, Coolify will rename your `postgres` stack to `postgres-<uuid>` and your `laravel` stack to `laravel-<uuid>`.
+Here is an example. You have a stack with a `postgres` database and a `laravel` application. Coolify will rename your `postgres` stack to `postgres-<uuid>` and your `laravel` stack to `laravel-<uuid>` to prevent name collisions.
 
-So, if you want to connect your `laravel` application to your `postgres` database, you need to set the `DB_HOST` environment variable to `postgres-<uuid>` and _NOT_ `postgres`.
+If you set `Connect to Predefined Network` option on your `laravel` stack, your `laravel` application will be able to connect to your `postgres` database, but you need to use the `postgres-<uuid>` as your `DB_HOST` environment variable.
