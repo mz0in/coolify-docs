@@ -51,13 +51,29 @@ You can define environment variables for your resources, and they will be availa
 If you would like to set environment variables for the build process, you can do by setting `Build Variable` on the UI.
 
 
-## Developer / Normal View
+## Shared Variables
 
-You can see your environment variables in a developer view (like `.env`) and in a normal view. 
+You could have 3 types of shared variables:
+1. Team Based
+2. Project Based
+3. Environment Based (production, staging, etc.)
 
-:::tip
-Developer view are useful to quickly overwrite or copy all your variables.
-:::
+You can set shared variables on their respective pages.
+
+Then you can use these variables anywhere. For example: You defined `NODE_ENV` to `production`.
+
+### Team Based
+
+You can set them on the `Team` page and use it with <span v-pre>`{{team.NODE_ENV}}`</span>.
+
+### Project Based
+
+You can set them on the `Projects` page, under the gear icon and use it with <span v-pre>`{{project.NODE_ENV}}`</span>.
+
+### Environment Based
+
+You can set them on the `Environments` page (select a `Project`), under the gear icon and use it with <span v-pre>`{{environment.NODE_ENV}}`</span>.
+
 
 ## Predefined Variables
 
