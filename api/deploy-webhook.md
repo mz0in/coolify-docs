@@ -57,5 +57,5 @@ curl -H "Authorization: Bearer 4|bBx6dwcuY4IL05SxDvUjfFs547vOgZOJTx3Fp95rd76ff2d
 
 ## Query Parameters
 
-- `uuid`: Could be found in the URL of the resource page.
+- `uuid`: Could be found in the URL of the resource page. It can be a list of comma-separated UUIDs, e.g. `uuid=uuid1,uuid2,uuid3`.
 - `force`: If set to `true`, the deployment won't use cache. Default is `false`.
