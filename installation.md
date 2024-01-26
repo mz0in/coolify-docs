@@ -51,6 +51,8 @@ Coolify is a self-hosted application, which means you need to install it on your
 - SUSE based Linux distributions (SLES, SUSE, openSUSE, etc.)
 - Raspberry Pi OS (Raspbian)
 
+If you are looking for Docker Desktop installation, go to [here](#docker-desktop-installation).
+
 If you would like to have other, please consider [open an issue on GitHub](https://github.com/coollabsio/coolify/issues/new).
 
 > `AMD64` and `ARM` architecture are supported.
@@ -194,6 +196,27 @@ docker compose --env-file /data/coolify/source/.env -f /data/coolify/source/dock
 ```
 
 12. Now you can access Coolify on port `8000` of your server.
+
+
+## Docker Desktop Installation
+
+:::danger
+This is not recommended for production usage. This is only for testing purposes.
+:::
+
+### Windows
+
+1. Install [Docker Desktop](https://www.docker.com/products/docker-desktop) for Windows.
+2. Create a directory that will hold all your Coolify related data. For example in your User directory: `C:\Users\yourusername\coolify`.
+3. Copy `docker-compose.windows.yml` and `.env.windows-docker-desktop.example` to the directory you created in the previous step.
+4. Rename `docker-compose.windows.yml` to `docker-compose.yml`.
+5. Rename `.env.windows-docker-desktop.example` to `.env`.
+6. Create a `coolify` docker network with `docker network create coolify`.
+7. Optional: Change the values in `.env` file.
+8. Start Coolify with `docker compose up` command.
+9. You can access Coolify on port `localhost:8000` of your machine.
+
+> Coolify Proxy is still not working on Windows. Working on it.
 
 ## Uninstall
 
