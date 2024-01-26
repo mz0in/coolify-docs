@@ -57,3 +57,6 @@ This keeps the load separated, so it does not affect your application's performa
 - The server needs Docker Engine installed.
 
 If you have more than one build server, the used server will be chosen randomly.
+
+## How to use
+Simply enable the feature on the General tab of any application resource on the Build section.
