@@ -2,10 +2,10 @@
 head:
   - - meta
     - name: description
-      content: Coolify Documentation - GitLab Integration
+      content: Coolify Documentation - Bitbucket Integration
   - - meta
     - name: keywords
-      content: coolify self-hosting docker kubernetes vercel netlify heroku render digitalocean aws gcp azure gitlab
+      content: coolify self-hosting docker kubernetes vercel netlify heroku render digitalocean aws gcp azure bitbucket
   - - meta
     - name: twitter:card
       content: summary_large_image
@@ -14,13 +14,13 @@ head:
       content: "@coolifyio"
   - - meta
     - name: twitter:title
-      content: Coolify Documentation - GitLab Integration
+      content: Coolify Documentation - Bitbucket Integration
   - - meta
     - name: twitter:description
       content: Self-hosting with superpowers.
   - - meta
     - name: twitter:image
-      content: https://coolcdn.b-cdn.net/assets/coolify/gitlab-integration-og-image.png
+      content: https://coolcdn.b-cdn.net/assets/coolify/bitbucket-integration-og-image.png
   - - meta
     - property: og:type
       content: website
@@ -38,26 +38,30 @@ head:
       content: Coolify
   - - meta
     - property: og:image
-      content: https://coolcdn.b-cdn.net/assets/coolify/gitlab-integration-og-image.png
+      content: https://coolcdn.b-cdn.net/assets/coolify/bitbucket-integration-og-image.png
 ---
 
-# GitLab Integration
+# Bitbucket Integration
 
-This guide will show you how to use GitLab based repositories with Coolify.
+This guide will show you how to use Bitbucket based repositories with Coolify.
 
 ## Public Repositories
 
 You can use public repositories without any additional setup.
 1. Select the `Public repository` option in the Coolify when you create a new resource.
-2. Add your repository URL to the input field, for example: `https://gitlab.com/andrasbacsai/nodejs-example`
+2. Add your repository URL to the input field, for example: `https://bitbucket.com/andrasbacsai/nodejs-example`
+
 :::tip
 You can only use the https URL.
 ::: 
+
+
 3. That's it! Coolify will automatically pull the latest version of your repository and deploy it.
 
 ## Private Repositories
 Private repositories require a few more steps to setup.
-1. Add a private key (aka `Deploy Keys`) to Coolify and to your GitLab repository in the `Settings` / `Repository` / `Deploy Keys` menu.
+
+1. Add a private key (aka `Deploy Keys`) to Coolify and to your Bitbucket repository in the `Repository Settings` / `Access Keys` menu.
 
 :::tip
 - You can generate a new key pair with the following command: `ssh-keygen -t rsa -b 4096 -C "
@@ -66,7 +70,7 @@ Private repositories require a few more steps to setup.
 
 
 2. Create a new resource and select the `Private Repository (with deploy key)`
-3. Add your repository URL to the input field, for example: `git@gitlab.com:andrasbacsai/nodejs-example.git`
+3. Add your repository URL to the input field, for example: `git@bitbucket.com:andrasbacsai/nodejs-example.git`
 
 :::tip
 You need to use the SSH URL, so the one that starts with `git@`.
@@ -75,25 +79,29 @@ You need to use the SSH URL, so the one that starts with `git@`.
 4. That's it! Coolify will automatically pull the latest version of your repository and deploy it.
 
 ## Automatic commit deployments with webhooks (Optional)
-You can add a custom webhook URL to your GitLab repository to trigger a new deployment when you push to your repository.
+You can add a custom webhook URL to your Bitbucket repository to trigger a new deployment when you push to your repository.
 
 :::tip
 This can be set on either public or private repositories.
 :::
 
-In your resource, there is a `Webhooks` menu. In the `Manual Git Webhooks` section, you can find the URL what you need to set in your GitLab repository.
+In your resource, there is a `Webhooks` menu. In the `Manual Git Webhooks` section, you can find the URL what you need to set in your Bitbucket repository.
 
-1. Set a secret key in the `GitLab Webhook Secret` input field.
-2. Go to your repository in GitLab and open the `Settings` / `Webhooks` menu.
+1. Set a secret key in the `Bitbucket Webhook Secret` input field.
+2. Go to your repository in Bitbucket and open the `Repository Settings` / `Webhooks` menu as `Repository hooks`.
 3. Add the URL from Coolify to the `URL` input field and the secret token.
-4. Select the `Push events` option.
-5. That's it! Now when you push to your repository, GitLab will send a webhook request to Coolify and it will trigger a new deployment.
+4. Select the `Push` option.
+5. That's it! Now when you push to your repository, Bitbucket will send a webhook request to Coolify and it will trigger a new deployment.
 
 ## Merge request deployments with webhooks (Optional)
-You can add a custom webhook URL to your GitLab repository to trigger a new deployment when you create a new merge request.
+You can add a custom webhook URL to your Bitbucket repository to trigger a new deployment when you create a new merge request.
 
 :::tip
 This can be set on either public or private repositories.
 :::
 
-The process is the same as the previous one, but you need to select the `Merge request events` option in the `Settings` / `Webhooks` menu.
+The process is the same as the previous one. In the `Repository Settings` / `Webhooks` menu, you need to select the following events in the `Pull Request` option:
+- `Created`
+- `Updated`
+- `Merged`
+- `Declined`

@@ -94,16 +94,22 @@ const config = {
                 {
                   text: "GitHub",
                   items: [
-                    { text: "GitHub Actions", link: "/git-providers/github/github-actions" },
+                    { text: "Integrations", link: "/git-providers/github/integration" },
+                    { text: "Actions", link: "/git-providers/github/github-actions" },
                   ]
                 },
                 {
                   text: "GitLab",
                   items: [
-                    { text: "GitLab Integration", link: "/git-providers/gitlab/integration" },
+                    { text: "Integrations", link: "/git-providers/gitlab/integration" },
                   ]
                 },
-
+                {
+                  text: "Bitbucket",
+                  items: [
+                    { text: "Integrations", link: "/git-providers/bitbucket/integration" },
+                  ]
+                },
               ]
             },
             {
