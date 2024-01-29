@@ -174,6 +174,7 @@ const config = {
             { text: "S3 Storages", link: "/s3-storages" },
             { text: "Drain Logs", link: "/drain-logs" },
             { text: "Commands", link: "/commands" },
+            { text: "Custom Docker Options", link: "/custom-docker-options" },
           ],
         },
       ],
