@@ -45,7 +45,7 @@ head:
 For deploying your resources, you can add custom options to the final docker command, which is used to run your container.
 
 :::warning
-Some of the docker native options are not supported, because it could break the Coolify's functionality. If you need to add more options, please contact us.
+Some of the docker native options are not supported, because it could break the Coolify's functionality. If you need any of the unsupported options, please contact us.
 :::
 
 ## Supported Options
