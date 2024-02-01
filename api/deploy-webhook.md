@@ -43,19 +43,23 @@ head:
 
 # Deploy Webhook
 
+
+GET `<instanceUrl>/api/v1/deploy?uuid=<UUID>&force=false`
+
 :::tip
-The URL for each resource could be found on the `Webhooks` menu on the resource page.
+UUID can be a list of comma-separated UUIDs, e.g. `uuid=uuid1,uuid2,uuid3`.
 :::
 
-GET `<instanceUrl>/api/v1/deploy?uuid=<resourceUuid>&force=false`
+Examples: 
+- `https://app.coolify.io/api/v1/deploy?uuid=hg04w48&force=false`
+- `https://app.coolify.io/api/v1/deploy?uuid=hg04w48,hjh43ig,23iigj4,uh4238f&force=false`
 
-Example: `https://app.coolify.io/api/v1/deploy?uuid=hg04w48&force=false`
-
+Curl:
 ```bash
 curl -H "Authorization: Bearer 4|bBx6dwcuY4IL05SxDvUjfFs547vOgZOJTx3Fp95rd76ff2dc" https://app.coolify.io/api/v1/deploy?uuid=hg04w48
 ```
 
 ## Query Parameters
 
-- `uuid`: Could be found in the URL of the resource page. It can be a list of comma-separated UUIDs, e.g. `uuid=uuid1,uuid2,uuid3`.
+- `uuid`: Could be found in the URL of the resource page. 
 - `force`: If set to `true`, the deployment won't use cache. Default is `false`.
