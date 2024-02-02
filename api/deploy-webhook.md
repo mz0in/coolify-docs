@@ -41,25 +41,44 @@ head:
       content: https://cdn.coollabs.io/assets/coolify/og-image-docs.png
 ---
 
-# Deploy Webhook
+# Deploy Webhooks
 
 
 GET `<instanceUrl>/api/v1/deploy?uuid=<UUID>&force=false`
 
+GET `<instanceUrl>/api/v1/deploy?tag=<UUID>&force=false`
+
 :::tip
-UUID can be a list of comma-separated UUIDs, e.g. `uuid=uuid1,uuid2,uuid3`.
+`uuid` can be a list of comma-separated UUIDs, e.g. `uuid=uuid1,uuid2,uuid3`.
+
+`tag` can be a list of comma-separated tags, e.g. `tag=tag1,tag2,tag2`.
 :::
 
-Examples: 
-- `https://app.coolify.io/api/v1/deploy?uuid=hg04w48&force=false`
-- `https://app.coolify.io/api/v1/deploy?uuid=hg04w48,hjh43ig,23iigj4,uh4238f&force=false`
+## Examples
+
+With `uuid`:
+- `<instanceUrl>/api/v1/deploy?uuid=hg04w48&force=false`
+- `<instanceUrl>/api/v1/deploy?uuid=hg04w48,hjh43ig,23iigj4,uh4238f&force=false`
+  
+With `tag`:
+- `<instanceUrl>/api/v1/deploy?tag=tag1&force=false`
+- `<instanceUrl>/api/v1/deploy?tag=tag1,tag2,tag3&force=false`
 
 Curl:
+
 ```bash
-curl -H "Authorization: Bearer 4|bBx6dwcuY4IL05SxDvUjfFs547vOgZOJTx3Fp95rd76ff2dc" https://app.coolify.io/api/v1/deploy?uuid=hg04w48
+# With UUID
+curl -H "Authorization: Bearer <token>" https://app.coolify.io/api/v1/deploy?uuid=hg04w48
+curl -H "Authorization: Bearer <token>" https://app.coolify.io/api/v1/deploy?uuid=hg04w48,hjh43ig,23iigj4,uh4238f
+
+# With Tag
+curl -H "Authorization: Bearer <token>" https://app.coolify.io/api/v1/deploy?tag=api
+curl -H "Authorization: Bearer <token>" https://app.coolify.io/api/v1/deploy?tag=api,web
 ```
 
 ## Query Parameters
+You could deploy by `uuid` or by `tag`;
 
-- `uuid`: Could be found in the URL of the resource page. 
+- `uuid`: The UUID of the resource(s) you want to deploy. 
+- `tag`: The name of the tag(s) you want to deploy.
 - `force`: If set to `true`, the deployment won't use cache. Default is `false`.
