@@ -46,7 +46,7 @@ head:
 
 GET `<instanceUrl>/api/v1/deploy?uuid=<UUID>&force=false`
 
-GET `<instanceUrl>/api/v1/deploy?tag=<UUID>&force=false`
+GET `<instanceUrl>/api/v1/deploy?tag=<tag_name>&force=false`
 
 :::tip
 `uuid` can be a list of comma-separated UUIDs, e.g. `uuid=uuid1,uuid2,uuid3`.
