@@ -55,6 +55,7 @@ This keeps the load separated, so it does not affect your application's performa
 - The server needs to be authenticated to the container registry. See [this](../docker/registry.md) for more information.
 - The server needs to have access to the source code.
 - The server needs Docker Engine installed.
+- The server should be the same architecture as the deployment servers.
 
 If you have more than one build server, the used server will be chosen randomly.
 
