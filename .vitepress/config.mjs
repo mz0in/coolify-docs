@@ -115,6 +115,7 @@ const config = {
             {
               text: "Server",
               items: [
+                { text: "Multiple Servers", link: "/server/multiple-servers" },
                 { text: "Build Server", link: "/server/build-server" },
                 { text: "Firewall", link: "/server/firewall" },
                 { text: "OpenSSH", link: "/server/openssh" },
