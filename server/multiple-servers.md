@@ -50,6 +50,7 @@ With this feature, You could deploy the same application to multiple servers, ad
 
 ## Requirements
 - Each server should be added to Coolify, validated and reachable.
+- Each server (and the optional build server) should be the same architecture (AMD64, ARM).
 - You must push the built image to a Docker Registry. Coolify automates the process, you just need to [login to the registry](/docker/registry.md#docker-credentials) on the server.
 
 
