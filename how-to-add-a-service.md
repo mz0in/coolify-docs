@@ -203,6 +203,33 @@ services:
         - APPWRITE_PASSWORD=$SERVICE_PASSWORD_64_APPWRITE
 ```
 
+### Storage
+You can predefine storage normally in your compose file, but there are a few extra options that you can set to tell Coolify what to do with the storage.
+
+Let's see an example:
+
+```yaml
+# Predefine directories with host binding
+services:
+  filebrowser:
+    image: filebrowser/filebrowser:latest
+    environment:
+      - SERVICE_FQDN_FILEBROWSER
+    volumes:
+      - type: bind
+        source: ./srv
+        target: /srv
+        is_directory: true # This will tell Coolify to create the directory (this is not avaiable in a normal docker-compose)
+      - ./database.db:/database.db 
+      - ./filebrowser.json:/.filebrowser.json
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80"]
+      interval: 2s
+      timeout: 10s
+      retries: 15
+```
+
+
 ## Metadata
 
 You need to add extra metadata to the top of the `docker-compose` file, like:
