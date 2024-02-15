@@ -77,7 +77,9 @@ Once you logged in, Coolify will automatically detect your credentials and use t
 If you are deploying to a Swarm cluster, you need to make sure that your Docker Registry is accessible from all nodes in the cluster, workers and managers.
 
 ## Host your own registry
-You can easily host your own registry, however, it will consume a lot of storages. 
+You can easily host your own registry, however, it will consume a lot of storages as by default it stores images locally on the server. 
+
+More info on how to set other storage drivers can be found in the [official documentation](https://distribution.github.io/distribution/storage-drivers/).
  
 You can find the one-click service in Coolify.
 
