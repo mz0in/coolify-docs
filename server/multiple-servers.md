@@ -79,9 +79,7 @@ This is super simple and effective. But keep in mind, that you need to only allo
 :::
 
 ### Using a domain
-If you do not want to map ports to the host system.
-
-In this case, you need to set the **loadbalancer domain with HTTP, (not HTTPS)** in the `Domains` field, and then set the proper configuration for your loadbalancer, with SSL termination etc.
+In this case, you need to set the **loadbalancer domain with HTTP, (not HTTPS)** in the `Domains` field, and then set the proper configuration for your loadbalancer, with SSL termination.
 
 With this configuration, you can use several domains with one loadbalancer.
 
