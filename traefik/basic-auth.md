@@ -45,18 +45,32 @@ head:
 
 This guide will help you to configure basic auth in Coolify & Traefik.
 
+The configuration is slightly different for `Standard Applications` and `Docker Compose` based applications/one-click services.
+
 All you need to do is to set custom labels on your application.
+
+## Standard Applications
 
 ```bash
 traefik.http.middlewares.custom-auth.basicauth.users=test:$$2y$$12$$ci.4U63YX83CwkyUrjqxAucnmi2xXOIlEF6T/KdP9824f1Rf1iyNG
-traefik.http.routers.q04o0gk-0-http.middlewares=custom-auth
+traefik.http.routers.<unique_router_name>.middlewares=custom-auth
 ```
 In the example above, we are using `test` as username and `test` as password.
-- `custom-auth` is the name of the middleware. You can change it to whatever you want. 
 
+
+## Docker Compose based Applications & one-click Services
+
+You only need to add the basicauth middleware.
+
+```bash
+traefik.http.middlewares.custom-auth.basicauth.users=test:$$2y$$12$$ci.4U63YX83CwkyUrjqxAucnmi2xXOIlEF6T/KdP9824f1Rf1iyNG
+```
+In the example above, we are using `test` as username and `test` as password.
 
 ## How to generate user/password?
-You need to set your username and password in the `users` label. You can generate your password with [Online htpasswd generator](https://www.web2generators.com/apache-tools/htpasswd-generator) or [htpasswd](https://httpd.apache.org/docs/current/programs/htpasswd.html) command.
+You need to set your username and password in the `basicauth.users` label. 
+
+You can generate your password with an [online htpasswd generator](https://www.web2generators.com/apache-tools/htpasswd-generator) or [htpasswd](https://httpd.apache.org/docs/current/programs/htpasswd.html) command:
 
 ```bash
 htpasswd -nbB test test
