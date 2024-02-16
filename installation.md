@@ -49,6 +49,7 @@ Coolify is a self-hosted application, which means you need to install it on your
 - Debian based Linux distributions (Debian, Ubuntu, etc.)
 - Redhat based Linux distributions (CentOS, Fedora, Redhat, AlmaLinux, Rocky etc.)
 - SUSE based Linux distributions (SLES, SUSE, openSUSE, etc.)
+- Arch Linux
 - Raspberry Pi OS (Raspbian)
 
 If you are looking for Docker Desktop installation, go to [here](#docker-desktop-installation).
