@@ -126,7 +126,7 @@ const config = {
               text: "Traefik",
               items: [
                 { text: "Basic Auth", link: "/traefik/basic-auth" },
-                { text: "Dynamic Configs", link: "/traefik/dynamic-configs" },
+                { text: "Load-balancing", link: "/traefik/load-balancing" },
                 { text: "Wildcard SSL", link: "/traefik/wildcard-certificates" },
                 { text: "Redirects", link: "/traefik/redirects" },
               ]

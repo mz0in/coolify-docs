@@ -1,0 +1,210 @@
+---
+head:
+  - - meta
+    - name: description
+      content: Coolify - LoadbaLoadbalancinglance with Traefik
+  - - meta
+    - name: keywords
+      content: coolify self-hosting github github-actions docker kubernetes vercel netlify heroku render digitalocean aws gcp azure basic auth traefik loadbalance loadbalancing
+  - - meta
+    - name: twitter:card
+      content: summary_large_image
+  - - meta
+    - name: twitter:site
+      content: "@coolifyio"
+  - - meta
+    - name: twitter:title
+      content: Coolify - Loadbalancing with Traefik
+  - - meta
+    - name: twitter:description
+      content: Self-hosting with superpowers.
+  - - meta
+    - name: twitter:image
+      content: https://coolcdn.b-cdn.net/assets/coolify/loadbalancing-with-traefik-og-image.png
+  - - meta
+    - property: og:type
+      content: website
+  - - meta
+    - property: og:url
+      content: https://coolify.io
+  - - meta
+    - property: og:title
+      content: Coolify
+  - - meta
+    - property: og:description
+      content: Self-hosting with superpowers.
+  - - meta
+    - property: og:site_name
+      content: Coolify
+  - - meta
+    - property: og:image
+      content: https://coolcdn.b-cdn.net/assets/coolify/loadbalancing-with-traefik-og-image.png
+---
+
+# Load-balancing with Traefik
+
+This guide will help you to configure loadbalancing in Coolify & Traefik.
+
+You can easily use Traefik to loadbalance an application between:
+- 2+ servers
+- 2+ containers in one server
+
+## Prerequisites 
+### 2+ servers
+1. You must deploy your application to more than one servers: read more [here](../server/multiple-servers.md).
+2. Make sure Traefik is running on all servers.
+3. Set your `fqdn` to the fqdn you would like to use to reach your application.
+4. After your application are deployed on all servers, you need to make a dynamic configuration for Traefik to loadbalance between your servers in the `/data/coolify/proxy/dynamic` directory.
+
+### 2+ containers in one server
+
+1. You must deploy your application to more than one containers in one server.
+2. Make sure Traefik is running on the server.
+   
+## Dynamic Configuration
+### 2+ servers
+Login to your server that you would like to use as a loadbalancer and create a file (you can use any name, like `my-first-lb.yaml`) in the `/data/coolify/proxy/dynamic` directory.
+
+The following configuration is valid if you would like to use https.
+
+```yaml{16,26,32,33}
+http:
+  middlewares:
+    redirect-to-https:
+      redirectscheme:
+        scheme: https
+    gzip:
+      compress: true
+  routers:
+    lb-http:
+      middlewares:
+        - redirect-to-https
+      entryPoints:
+        - http
+      service: noop
+      # Change <CHANGE_THIS_TO_YOUR_DOMAIN> to your domain, like `example.com` without `https://`
+      rule: Host(`<CHANGE_THIS_TO_YOUR_DOMAIN>`)
+    lb-https:
+      middlewares:
+        - gzip
+      entryPoints:
+        - https
+      service: lb-https
+      tls:
+        certResolver: letsencrypt
+      # Change <CHANGE_THIS_TO_YOUR_DOMAIN> to your domain, like `example.com` without `https://`
+      rule: Host(`<CHANGE_THIS_TO_YOUR_DOMAIN>`) 
+  services:
+    lb-https:
+      loadBalancer:
+        servers:
+          # Change <CHANGE_THIS_TO_YOUR_IP_ADDRESS> to your servers IP addresses
+          - url: 'http://<CHANGE_THIS_TO_YOUR_IP_ADDRESS>'
+          - url: 'http://<CHANGE_THIS_TO_YOUR_IP_ADDRESS>'
+          # Add any number of servers you want to loadbalance between
+    noop:
+      loadBalancer:
+        servers:
+          - url: ''
+```
+
+The following configuration is valid if you would like to use http.
+
+```yaml{13,19,20}
+http:
+  middlewares:
+    gzip:
+      compress: true
+  routers:
+    lb-http:
+      middlewares:
+        - gzip
+      entryPoints:
+        - http
+      service: lb-http
+      # Change <CHANGE_THIS_TO_YOUR_DOMAIN> to your domain, like `example.com` without `http://`
+      rule: Host(`<CHANGE_THIS_TO_YOUR_DOMAIN>`) 
+  services:
+    lb-http:
+      loadBalancer:
+        servers:
+          # Change <CHANGE_THIS_TO_YOUR_IP_ADDRESS> to your servers IP addresses
+          - url: 'http://<CHANGE_THIS_TO_YOUR_IP_ADDRESS>'
+          - url: 'http://<CHANGE_THIS_TO_YOUR_IP_ADDRESS>'
+          # Add any number of servers you want to loadbalance between
+```
+
+### 2+ containers in one server
+
+The following configuration is valid if you would like to use https.
+
+```yaml{18,26,32,33}
+http:
+  middlewares:
+    redirect-to-https:
+      redirectscheme:
+        scheme: https
+    gzip:
+      compress: true
+  routers:
+    lb-https:
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - gzip
+      entryPoints:
+        - https
+      service: lb-https
+      # Change <CHANGE_THIS_TO_YOUR_DOMAIN> to your domain, like `example.com` without `http://`
+      rule: Host(`<CHANGE_THIS_TO_YOUR_DOMAIN>`) 
+    lb-http:
+      middlewares:
+        - redirect-to-https
+      entryPoints:
+        - http
+      service: noop
+      # Change <CHANGE_THIS_TO_YOUR_DOMAIN> to your domain, like `example.com` without `http://`
+      rule: Host(`<CHANGE_THIS_TO_YOUR_DOMAIN>`) 
+  services:
+    lb-https:
+      loadBalancer:
+        servers:
+          # Change <UUID_OR_HOST.DOCKER.INTERNAL>:<PORT> to your containers UUID or host.docker.internal and port
+          # UUID is when you mapped a port to the host system
+          # host.docker.internal is when you are not exposed any port to the host system
+          - url: 'http://<UUID_OR_HOST.DOCKER.INTERNAL>:<PORT>'
+          - url: 'http://<UUID_OR_HOST.DOCKER.INTERNAL>:<PORT>:<PORT>'
+          # Add any number of containers you want to loadbalance between
+    noop:
+      loadBalancer:
+        servers:
+          - url: ''
+```
+
+The following configuration is valid if you would like to use http.
+
+```yaml{13,19,20}
+http:
+  middlewares:
+    gzip:
+      compress: true
+  routers:
+    lb-http:
+      middlewares:
+        - gzip
+      entryPoints:
+        - http
+      service: lb-http
+      # Change <CHANGE_THIS_TO_YOUR_DOMAIN> to your domain, like `example.com` without `http://`
+      rule: Host(`<CHANGE_THIS_TO_YOUR_DOMAIN>`) 
+  services:
+    lb-http:
+      loadBalancer:
+        servers:
+          # Change <UUID_OR_HOST.DOCKER.INTERNAL>:<PORT> to your containers UUID or host.docker.internal and port
+          # UUID is when you mapped a port to the host system
+          # host.docker.internal is when you are not exposed any port to the host system
+          - url: 'http://<UUID_OR_HOST.DOCKER.INTERNAL>:<PORT>'
+          - url: 'http://<UUID_OR_HOST.DOCKER.INTERNAL>:<PORT>'
+          # Add any number of containers you want to loadbalance between
+```
