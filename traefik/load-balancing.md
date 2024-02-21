@@ -138,7 +138,7 @@ http:
 
 The following configuration is valid if you would like to use https.
 
-```yaml{18,26,32,33}
+```yaml{18,26,34,35}
 http:
   middlewares:
     redirect-to-https:
@@ -183,7 +183,7 @@ http:
 
 The following configuration is valid if you would like to use http.
 
-```yaml{13,19,20}
+```yaml{13,21,22}
 http:
   middlewares:
     gzip:
