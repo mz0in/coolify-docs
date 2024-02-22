@@ -49,20 +49,16 @@ You can easily use Traefik to loadbalance an application between:
 - 2+ servers
 - 2+ containers in one server
 
-## Prerequisites 
-### 2+ servers
-1. You must deploy your application to more than one servers: read more [here](../server/multiple-servers.md).
-2. Make sure Traefik is running on all servers.
-3. Set your `fqdn` to the fqdn you would like to use to reach your application.
-4. After your application are deployed on all servers, you need to make a dynamic configuration for Traefik to loadbalance between your servers in the `/data/coolify/proxy/dynamic` directory.
+## 2+ servers
+### Prerequisites 
 
-### 2+ containers in one server
+1. Make sure you set the right DNS record for your domain. Your loadbalanced domain should point to the server's IP address where you are setting up the loadbalancer.
+2. You must deploy your application to more than one servers: read more [here](../server/multiple-servers.md).
+3. Make sure Traefik is running on all servers.
+4. Set your `fqdn` to the fqdn you would like to use to reach your application.
+5. After your application are deployed on all servers, you need to make a dynamic configuration for Traefik to loadbalance between your servers in the `/data/coolify/proxy/dynamic` directory.
 
-1. You must deploy your application to more than one containers in one server.
-2. Make sure Traefik is running on the server.
-   
-## Dynamic Configuration
-### 2+ servers
+### Dynamic Configuration
 Login to your server that you would like to use as a loadbalancer and create a file (you can use any name, like `my-first-lb.yaml`) in the `/data/coolify/proxy/dynamic` directory.
 
 The following configuration is valid if you would like to use https.
@@ -133,9 +129,13 @@ http:
           - url: 'http://<CHANGE_THIS_TO_YOUR_IP_ADDRESS>'
           # Add any number of servers you want to loadbalance between
 ```
-
-### 2+ containers in one server
-
+## 2+ containers in one server
+### Prerequisites
+1. Make sure you set the right DNS record for your domain. Your loadbalanced domain should point to the server's IP address where you are setting up the loadbalancer.
+2. You must deploy your application to more than one containers in one server.
+3. Make sure Traefik is running on the server.
+   
+### Dynamic Configuration
 The following configuration is valid if you would like to use https.
 
 ```yaml{18,26,34,35}
