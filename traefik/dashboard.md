@@ -42,10 +42,12 @@ head:
 ---
 
 # Enable Dashboard
-By default, the Traefik dashboard is enabled, but only in secure mode. 
+By default, the Traefik dashboard is enabled in secure mode, but not configured to be accessible from the internet.
 
-## Dynamic Configuration
-You can enable it by adding the following dynamic configuration (you can add it on the UI since v223):
+To enable access from the internet, you need to add a dynamic configuration and secure it with a username and password.
+
+## Secure mode (with Dynamic Configuration)
+You can enable Traefik's dashboard by adding the following dynamic configuration:
 
 ```yaml{4,12}
 http:
@@ -79,9 +81,7 @@ test:$apr1$H6uskkkW$IgXLP6ewTrSuBkTrqE8wj/
 ```
 
 ## Insecure Mode (Not Recommended)
-If you want to enable the dashboard in insecure mode (without password).
-
-All you need to do is to go the proxy configurations view and change the `insecure` to `true` and `restart the proxy`.
+If you want to enable the dashboard in insecure mode (without a password), all you need to do is go to the proxy configurations view and change the `insecure` setting to `true`, then restart the proxy..
 
 ```yaml{4}
    - '--api.insecure=true'
