@@ -47,6 +47,10 @@ By default, the Traefik dashboard is enabled in secure mode, but not configured 
 To enable access from the internet, you need to add a dynamic configuration and secure it with a username and password.
 
 ## Secure mode (with Dynamic Configuration)
+
+:::tip
+How to configure Traefik's dynamic configuration? [Read more](./dynamic-configurations.md)
+:::
 You can enable Traefik's dashboard by adding the following dynamic configuration:
 
 ```yaml{4,12}

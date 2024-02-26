@@ -130,6 +130,7 @@ const config = {
                 { text: "Load-balancing", link: "/traefik/load-balancing" },
                 { text: "Wildcard SSL", link: "/traefik/wildcard-certificates" },
                 { text: "Redirects", link: "/traefik/redirects" },
+                { text: "Dynamic Configurations", link: "/traefik/dynamic-configurations" },
               ]
             },
             {
