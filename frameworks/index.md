@@ -51,3 +51,4 @@ For general Nixpacks documentation, see [Nixpacks](https://nixpacks.com/docs/pro
 - [Laravel](./laravel.md)
 - [SvelteKit](./svelte-kit.md)
 - [Rails](./rails.md)
+- [Jekyll](./jekyll.md)
