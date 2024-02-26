@@ -49,6 +49,8 @@ Some of the docker native options are not supported, because it could break the 
 :::
 
 ## Supported Options
+- `--ip`
+- `--ip6`
 - `--cap-add`
 - `--cap-drop`
 - `--security-opt`
