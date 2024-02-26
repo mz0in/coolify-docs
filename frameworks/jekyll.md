@@ -60,7 +60,7 @@ If you want simplicity, you can use a Dockerfile to deploy your Jekyll applicati
 FROM ruby:3.1.1 AS builder
 RUN apt-get update -qq && apt-get install -y build-essential nodejs
 WORKDIR /srv/jekyll
-COPY Gemfile ./
+COPY Gemfile Gemfile.lock ./
 RUN bundle install
 COPY . .
 RUN chown 1000:1000 -R /srv/jekyll
@@ -71,4 +71,5 @@ COPY --from=builder /srv/jekyll/_site /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 ```
-3. Set the buildpack to `Dockerfile`.
+3. Make sure you have a `Gemfile` and `Gemfile.lock` in the root of your project.
+4. Set the buildpack to `Dockerfile`.
