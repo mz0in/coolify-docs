@@ -43,6 +43,12 @@ head:
 
 # Deploy Webhooks
 
+You can call this endpoint to deploy any resource(s) by `uuid` or `tag`.
+
+Tags should be defined on the UI before using them in the API.
+
+
+## Endpoint
 
 GET `<instanceUrl>/api/v1/deploy?uuid=<UUID>&force=false`
 
