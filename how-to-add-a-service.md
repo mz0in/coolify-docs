@@ -206,27 +206,42 @@ services:
 ### Storage
 You can predefine storage normally in your compose file, but there are a few extra options that you can set to tell Coolify what to do with the storage.
 
-Let's see an example:
+
+#### Create an empty directory
 
 ```yaml
 # Predefine directories with host binding
 services:
   filebrowser:
     image: filebrowser/filebrowser:latest
-    environment:
-      - SERVICE_FQDN_FILEBROWSER
     volumes:
       - type: bind
         source: ./srv
         target: /srv
         is_directory: true # This will tell Coolify to create the directory (this is not avaiable in a normal docker-compose)
-      - ./database.db:/database.db 
-      - ./filebrowser.json:/.filebrowser.json
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:80"]
-      interval: 2s
-      timeout: 10s
-      retries: 15
+
+```
+
+#### Create a file with content
+
+Here you can see how to add a file with content and an dynamic value that is coming from an environment variable.
+
+```yaml
+services:
+  filebrowser:
+    image: filebrowser/filebrowser:latest
+    environment:
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - type: bind
+        source: ./srv/99-roles.sql
+        target: /docker-entrypoint-initdb.d/init-scripts/99-roles.sql
+        content: |
+          -- NOTE: change to your own passwords for production environments
+           \set pgpass `echo "$POSTGRES_PASSWORD"`
+
+           ALTER USER authenticator WITH PASSWORD :'pgpass';
+           ALTER USER pgbouncer WITH PASSWORD :'pgpass';
 ```
 
 
