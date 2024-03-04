@@ -129,16 +129,16 @@ It is useful, because Traefik do not need to generate a new certificate for ever
   
 ```bash
 traefik.enable=true
-traefik.http.routers.fowo4wg-0-https.rule=Host(`example.coolify.io`) && PathPrefix(`/`)
-traefik.http.routers.fowo4wg-0-https.entryPoints=https
-traefik.http.routers.fowo4wg-0-https.middlewares=gzip
-traefik.http.routers.fowo4wg-0-https.service=fowo4wg-0-https
-traefik.http.services.fowo4wg-0-https.loadbalancer.server.port=80
-traefik.http.routers.fowo4wg-0-https.tls=true
-traefik.http.routers.fowo4wg-0-https.tls.certresolver=letsencrypt
-traefik.http.routers.fowo4wg-0-http.rule=Host(`example.coolify.io`) && PathPrefix(`/`)
-traefik.http.routers.fowo4wg-0-http.entryPoints=http
-traefik.http.routers.fowo4wg-0-http.middlewares=redirect-to-https
+traefik.http.routers.<unique_router_name>.rule=Host(`example.coolify.io`) && PathPrefix(`/`)
+traefik.http.routers.<unique_router_name>.entryPoints=https
+traefik.http.routers.<unique_router_name>.middlewares=gzip
+traefik.http.routers.<unique_router_name>.service=<unique_service_name>
+traefik.http.services.<unique_service_name>.loadbalancer.server.port=80
+traefik.http.routers.<unique_router_name>.tls=true
+traefik.http.routers.<unique_router_name>.tls.certresolver=letsencrypt
+traefik.http.routers.<unique_router_name>.rule=Host(`example.coolify.io`) && PathPrefix(`/`)
+traefik.http.routers.<unique_router_name>.entryPoints=http
+traefik.http.routers.<unique_router_name>.middlewares=redirect-to-https
 ```
 
 ### SaaS
@@ -149,26 +149,22 @@ Redirect all subdomains to one application. You can use this option if you want 
   
 ```bash
 traefik.enable=true
-traefik.http.routers.fowo4wg-0-https.rule=HostRegexp(`{subdomain:[a-zA-Z0-9-]+}.coolify.io`)
-traefik.http.routers.fowo4wg-0-https.entryPoints=https
-traefik.http.routers.fowo4wg-0-https.middlewares=gzip
-traefik.http.routers.fowo4wg-0-https.service=fowo4wg-0-https
-traefik.http.services.fowo4wg-0-https.loadbalancer.server.port=80
-traefik.http.routers.fowo4wg-0-https.tls=true
-traefik.http.routers.fowo4wg-0-https.tls.certresolver=letsencrypt
-traefik.http.routers.fowo4wg-0-http.rule=HostRegexp(`{subdomain:[a-zA-Z0-9-]+}.coolify.io`)
-traefik.http.routers.fowo4wg-0-http.entryPoints=http
-traefik.http.routers.fowo4wg-0-http.middlewares=redirect-to-https
+traefik.http.routers.<unique_router_name>.rule=HostRegexp(`{subdomain:[a-zA-Z0-9-]+}.coolify.io`)
+traefik.http.routers.<unique_router_name>.entryPoints=https
+traefik.http.routers.<unique_router_name>.middlewares=gzip
+traefik.http.routers.<unique_router_name>.service=<unique_service_name>
+traefik.http.services.<unique_service_name>.loadbalancer.server.port=80
+traefik.http.routers.<unique_router_name>.tls=true
+traefik.http.routers.<unique_router_name>.tls.certresolver=letsencrypt
+traefik.http.routers.<unique_router_name>.rule=HostRegexp(`{subdomain:[a-zA-Z0-9-]+}.coolify.io`)
+traefik.http.routers.<unique_router_name>.entryPoints=http
+traefik.http.routers.<unique_router_name>.middlewares=redirect-to-https
 ```
 
 
+> `traefik.http.routers.<unique_router_name>.tls.certresolver` should be the same as your `certresolver` name in Traefik proxy configuration, by default `letsencrypt`.
 
-
-> `fowo4wg-0-https` and `fowo4wg-0-http` should be unique between your applications. It can be anything, but it should be unique.
- 
-> `traefik.http.routers.fowo4wg-0-https.tls.certresolver` should be the same as your `certresolver` name in Traefik proxy configuration, by default `letsencrypt`.
-
-> `traefik.http.services.fowo4wg-0-https.loadbalancer.server.port` should be the same as your application listens on. Port 80 if you use a static deployment.
+> `traefik.http.services.<unique_service_name>.loadbalancer.server.port` should be the same as your application listens on. Port 80 if you use a static deployment.
 
 
 ::: danger
